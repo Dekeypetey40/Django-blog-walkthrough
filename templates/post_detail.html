@@ -1,6 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col md-8 offset-md-2">
+            
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
+                    {{ message | safe}}
+                    <p> {{ messages }}</p>
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">
 
+                    </button>
+                </div> 
+            {% endfor %}
+                
+        </div>
+    </div>
+</div>
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -53,7 +69,6 @@
                                 
                         </strong>
                         <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
@@ -116,5 +131,4 @@
         </div>
     </div>
 </div>
-
 {% endblock content %}
